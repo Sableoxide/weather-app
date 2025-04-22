@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Http;
 
 class Weather extends Controller
 {   
-    public function weatherToday(Request $request) {
+    public function weatherTodayand3DayForecast(Request $request) {
         $api_key = config("services.open_weather_map.key");
         $longitude = $request->query('lon');
         $latitude = $request->query('lat');
-        $url = "api.openweathermap.org/data/2.5/forecast/daily?lat=$latitude&lon=$longitude&cnt=1&appid=$api_key";
+        $url = "api.openweathermap.org/data/2.5/forecast/daily?lat=$latitude&lon=$longitude&cnt=4&appid=$api_key";
 
         try {
             $response = Http::timeout(3)->get($url);
@@ -40,4 +40,5 @@ class Weather extends Controller
             ];
         }
     }
+
 }
