@@ -17,13 +17,18 @@ class Geocoding extends Controller
         try {
             $response = Http::timeout(3)->get($url);
             if ($response->successful()) {
-                if (empty(json_decode($response->getBody(), true))) {
+                $json_response = json_decode($response->body(), true);
+                if (empty($json_response)) {
                     return response()->json(['message' => 'location not found'],404);
                 } else {
+                    $coordinates = [
+                        "lat" => $json_response[0]["lat"],
+                        "lon"=> $json_response[0]["lon"],
+                    ];
                     return [
                         "message" => "API request success",
                         "status" => $response->status(),
-                        "body" => $response->body()
+                        "body" => $coordinates,
                     ];
                 }
             } else {
