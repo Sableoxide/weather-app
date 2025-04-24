@@ -1,0 +1,162 @@
+.gray {
+  --gray-1: #fcfcfc;
+  --gray-2: #f9f9f9;
+  --gray-3: #f0f0f0;
+  --gray-4: #e8e8e8;
+  --gray-5: #e0e0e0;
+  --gray-6: #d9d9d9;
+  --gray-7: #cecece;
+  --gray-8: #bbbbbb;
+  --gray-9: #8d8d8d;
+  --gray-10: #838383;
+  --gray-11: #646464;
+  --gray-12: #202020;
+}
+
+.iris {
+  --iris-1: #fdfdff;
+  --iris-2: #f8f8ff;
+  --iris-3: #f0f1fe;
+  --iris-4: #e6e7ff;
+  --iris-5: #dadcff;
+  --iris-6: #cbcdff;
+  --iris-7: #b8baf8;
+  --iris-8: #9b9ef0;
+  --iris-9: #5b5bd6;
+  --iris-10: #5151cd;
+  --iris-11: #5753c6;
+  --iris-12: #272962;
+}
+
+.irisA {
+  --iris-a1: #0000ff02;
+  --iris-a2: #0000ff07;
+  --iris-a3: #0011ee0f;
+  --iris-a4: #000bff19;
+  --iris-a5: #000eff25;
+  --iris-a6: #000aff34;
+  --iris-a7: #0008e647;
+  --iris-a8: #0008d964;
+  --iris-a9: #0000c0a4;
+  --iris-a10: #0000b6ae;
+  --iris-a11: #0600abac;
+  --iris-a12: #000246d8;
+}
+
+.orangeDark {
+  --orange-1: #17120e;
+  --orange-2: #1e160f;
+  --orange-3: #331e0b;
+  --orange-4: #462100;
+  --orange-5: #562800;
+  --orange-6: #66350c;
+  --orange-7: #7e451d;
+  --orange-8: #a35829;
+  --orange-9: #f76b15;
+  --orange-10: #ff801f;
+  --orange-11: #ffa057;
+  --orange-12: #ffe0c2;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  background-color: #0000ff07;
+  flex: 1;
+}
+
+.sub_main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-right: solid 1px #838383;
+  max-width: 400px;
+  flex: 1;
+}
+
+.search_temp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-height: fit-content;
+  flex: 1;
+  padding: 40px;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 10rem;
+  flex: 1;
+}
+
+.search input {
+  max-width: 70rem;
+  background-color: #0000ff07;
+  margin-right: 1rem;
+}
+
+.temp {
+  display: flex;
+  width: fit-content;
+
+}
+
+.x3day_forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+  max-height: 30rem;
+  flex: 1;
+}
+
+.forecast_card {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  color: #202020;
+  background-color: #000bff19;
+  min-width: fit-content;
+  max-width: 350px;
+  width: 300px;
+  min-height: fit-content;
+  max-height: 350px;
+  height: 400px;
+  flex: 1;
+}
+
+.wind_humidity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  max-height: 30rem;
+  flex: 1;
+}
+
+.wind_humidity_cards {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #202020;
+  background-color: #000bff19;
+  padding: 1rem;
+  min-width: fit-content;
+  max-width: 35rem;
+  width: 350px;
+  min-height: fit-content;
+  max-height: 500px;
+  height: 400px;
+  flex: 1;
+}
