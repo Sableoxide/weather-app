@@ -15,7 +15,7 @@ return [
     */
 
     'open_weather_map' => [
-        'key' => env('OPEN_WEATHER_MAP_API_KEY'),
+        'key' => env('OPEN_WEATHER_MAP_API_KEY'), #the key used to develop this api has access to free for students services.
     ],
 
     'postmark' => [

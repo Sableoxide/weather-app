@@ -9,9 +9,11 @@ class Weather extends Controller
 {   
     public function weatherTodayand3DayForecast(Request $request) {
         $api_key = config("services.open_weather_map.key");
+        #fetch query values
         $longitude = $request->query('lon');
         $latitude = $request->query('lat');
         $day_cnt = $request->query('cnt');
+
         $url = "api.openweathermap.org/data/2.5/forecast/daily?lat=$latitude&lon=$longitude&cnt=4&appid=$api_key";
 
         try {
@@ -19,9 +21,9 @@ class Weather extends Controller
             if ($response->successful()) {
                 $json_response = json_decode($response->body(), true);
                 if (empty($json_response)) {
-                    return response()->json(['message' => 'forecast not found'],404);
+                    return response()->json(['message' => 'forecast not found'],404); #return if response is empty
                 } else {
-                    $weather_data = [
+                    $weather_data = [ #get only important info from response
                         "timestamp" => $json_response["list"][$day_cnt]["dt"],
                         "city" => $json_response["city"]["name"],
                         "temp"=> $json_response["list"][$day_cnt]["temp"]["day"],
@@ -31,21 +33,21 @@ class Weather extends Controller
                         "wind_speed"=> $json_response["list"][$day_cnt]["speed"],
                         "icon_url"=> "https://openweathermap.org/img/wn/".$json_response["list"][$day_cnt]["weather"][0]["icon"]."@2x.png",
                     ];
-                    return [
+                    return [ #return the important info
                         "message" => "API request success",
                         "status" => $response->status(),
                         "body" => $weather_data,
                     ];
                 }
             } else {
-                return [
+                return [ # if the api returns error
                     "error" => "API request not SUCCESSFUL",
                     "status" => $response->status(),
                     "body" => $response->body()
                 ];
             }
 
-        } catch (\Exception $e) {
+        } catch (\Exception $e) { #if the api call fails
             return [
                 "error" => "API call failed",
                 "message" => $e->getMessage()
