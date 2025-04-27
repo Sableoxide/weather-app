@@ -12,9 +12,9 @@ class Weather extends Controller
         #fetch query values
         $longitude = $request->query('lon');
         $latitude = $request->query('lat');
-        $day_cnt = $request->query('cnt');
+        
 
-        $url = "api.openweathermap.org/data/2.5/forecast/daily?lat=$latitude&lon=$longitude&cnt=4&appid=$api_key";
+        $url = "api.openweathermap.org/data/2.5/forecast/daily?lat=$latitude&lon=$longitude&cnt=4&units=metric&appid=$api_key";
 
         try {
             $response = Http::timeout(3)->get($url);
@@ -23,16 +23,18 @@ class Weather extends Controller
                 if (empty($json_response)) {
                     return response()->json(['message' => 'forecast not found'],404); #return if response is empty
                 } else {
-                    $weather_data = [ #get only important info from response
-                        "timestamp" => $json_response["list"][$day_cnt]["dt"],
-                        "city" => $json_response["city"]["name"],
-                        "temp"=> $json_response["list"][$day_cnt]["temp"]["day"],
-                        "humidity"=> $json_response["list"][$day_cnt]["humidity"],
-                        "weather"=> $json_response["list"][$day_cnt]["weather"][0]["main"],
-                        "wind_direction"=> $json_response["list"][$day_cnt]["deg"],
-                        "wind_speed"=> $json_response["list"][$day_cnt]["speed"],
-                        "icon_url"=> "https://openweathermap.org/img/wn/".$json_response["list"][$day_cnt]["weather"][0]["icon"]."@2x.png",
-                    ];
+                    $weather_data = [];
+                    for ($i = 0; $i < 4; $i++) {
+                        $weather_data[] = [ #get only important info from response
+                            "timestamp" => $json_response["list"][$i]["dt"],
+                            "city" => $json_response["city"]["name"],
+                            "temp"=> $json_response["list"][$i]["temp"]["day"],
+                            "humidity"=> $json_response["list"][$i]["humidity"],
+                            "weather"=> $json_response["list"][$i]["weather"][0]["main"],
+                            "wind_direction"=> $json_response["list"][$i]["deg"],
+                            "wind_speed"=> $json_response["list"][$i]["speed"],
+                            "icon_code"=> $json_response["list"][$i]["weather"][0]["icon"], #note to self: the icons from openweathermap are trash!
+                    ];}
                     return [ #return the important info
                         "message" => "API request success",
                         "status" => $response->status(),
@@ -43,7 +45,7 @@ class Weather extends Controller
                 return [ # if the api returns error
                     "error" => "API request not SUCCESSFUL",
                     "status" => $response->status(),
-                    "body" => $response->body()
+                    "body" => $response
                 ];
             }
 

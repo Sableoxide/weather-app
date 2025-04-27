@@ -69,16 +69,20 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 1rem;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-right: solid 1px #838383;
-  max-width: 400px;
+  padding: 1rem;
+  padding-top: 10rem;
+  max-width: 300px;
   flex: 1;
+  min-width: fit-content;
 }
 
 .search_temp {
@@ -101,6 +105,7 @@
 .search input {
   max-width: 70rem;
   background-color: #0000ff07;
+  color: #202020;
   margin-right: 1rem;
 }
 
@@ -114,6 +119,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 1rem;
   border-bottom: 1px solid #e0e0e0;
   align-items: center;
   max-height: 30rem;
@@ -141,6 +147,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
   max-height: 30rem;
   flex: 1;
 }
@@ -159,4 +166,40 @@
   max-height: 500px;
   height: 400px;
   flex: 1;
+}
+
+.weather_temp_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.time_city_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.humidity_text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.wind_direction_text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wind_speed {
+  display: flex;
+  flex-direction: row;
+  font-size: 50px;
+  font-weight: bold;
+  gap: 1rem;
 }
